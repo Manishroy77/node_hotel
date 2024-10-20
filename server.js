@@ -4,7 +4,9 @@ const db = require('./db');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+require('dotenv').config();
 
+const port = process.env.port;
 
 const members = require('./models/person');
 
