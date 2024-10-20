@@ -11,7 +11,7 @@ const personShema = new mongoose.Schema({
     },
     work:{
         type:String,
-        enum :['chef','manager','owner']
+        enum :['boss','normal']
     },
     mobile:{
         type:Number,
@@ -23,6 +23,6 @@ const personShema = new mongoose.Schema({
     }
 })
 
-const person = mongoose.model('members',personShema);
+const members = mongoose.model('members',personShema);
 
-module.exports = person;
+module.exports = members;

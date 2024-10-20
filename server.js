@@ -6,19 +6,19 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 
-const person = require('./models/person');
+const members = require('./models/person');
 
 
 
 app.get('/',(req,res)=>{
-    res.send('wellcmr to my server');
+    res.send('Another world');
 })
 
-app.post('/Person',async(req,res)=>{
+app.post('/log',async(req,res)=>{
     try{
         const data = req.body;
 
-        const newPerson = new person(data);
+        const newPerson = new members(data);
          const response =   await newPerson.save()
          console.log('data saved');
          res.status(200).json(response);
@@ -28,11 +28,15 @@ app.post('/Person',async(req,res)=>{
         res.status(500).json({Error: 'internal server error'});
     }
 })
+app.get('/log',async(req,res)=>{
+   const data=  await members.find()
+   console.log('data fatched');
+   res.status(200).json(data);
+})
 
 
 
 
-
-app.listen(3006,()=>{
+app.listen(6000,()=>{
     console.log('server ready');
 })
