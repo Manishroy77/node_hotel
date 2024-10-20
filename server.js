@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
 const db = require('./db');
+require('dotenv').config();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-require('dotenv').config();
 
-const port = process.env.port;
+
+const PORT = process.env.port;
 
 const members = require('./models/person');
 
@@ -39,6 +40,6 @@ app.get('/log',async(req,res)=>{
 
 
 
-app.listen(6000,()=>{
+app.listen(PORT,()=>{
     console.log('server ready');
 })
